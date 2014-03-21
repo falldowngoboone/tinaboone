@@ -1,12 +1,23 @@
+$baby-bear: 485px;
+$mama-bear: 767px;
+$papa-bear: 1100px;
+
+$padding: 10px;
+$gutter-width: 2%;
+$columns: 12;
 
 /* Global
 ================================ */
 
 .grid-container {
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: $padding;
+	padding-right: $padding;
 	margin-left: auto;
 	margin-right: auto;
+
+	@media (min-width: $papa-bear) {
+		max-width: $papa-bear;
+	}
 }
 
 img {
@@ -17,17 +28,18 @@ img {
 /* Media Queries
 ================================ */
 
-@media (min-width: 1px) and (max-width: 767px) {
+@media (min-width: 1px) and (max-width: $mama-bear) {
 	.grid-container > [class^="grid-"] {
-		padding-top: 5px;
-		padding-bottom: 5px;
+		padding-top: $padding / 2;
+		padding-bottom: $padding / 2;
 	}
 	.hide-mobile {
 		display: none;
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: $mama-bear) {
+
 
 	/* Columns
 	=========================================== */
@@ -35,62 +47,39 @@ img {
 	.grid-container > [class^="grid-"] {
 		float: left;
 		min-height: 1px;
-		padding-left: 10px;
-		padding-right: 10px;
-		margin-left: 2%;
-	}
-	.grid-container > [class^="grid-"]:first-child {
-		margin-left: 0;
-	}
-	.grid-container > [class^="grid-"]:last-child {
-		float: right;
+		padding-left: $padding;
+		padding-right: $padding;
+		margin-left: $gutter-width;
+
+		&:first-child {
+			margin-left: 0;
+		}
+		&:last-child {
+			float: right;
+		}
 	}
 
 
-	/* Columns are 65px wide, with 20px gutters
-	=========================================== */
+	// Pixel to percentage formula:
+	// target (total width in px) / context (1000 px for this particular layout) = result (in %)
 
-	/*
-	 * Pixel to percentage formula:
-	 * target (total width in px) / context (1000 px for this particular layout) = result (in %)
-	 */
+	@mixin build-grid($gutter-width, $columns) {
+		$col-width: (100-(($columns - 1) * $gutter-width)) / $columns;
 
-	.grid-1 {
-		width: 6.5%; /* 65px / 1000 px = .065 */
+		@for $i from 1 through $columns {
+			.grid-#{$i} {
+				width: ($i * $col-width) + (($i - 1) * ($gutter-width));
+			}
+		}
+
+		@for $i from 1 through $columns - 1 {
+			.offset-#{$i} {
+				margin-left: ($i * $col-width) + (($i) * ($gutter-width))
+			}
+		}
 	}
-	.grid-2 {
-		width: 15%; /* (65px + 65px + 20px) / 1000 px = .15 */
-	}
-	.grid-3 {
-		width: 23.5%;
-	}
-	.grid-4 {
-		width: 32%;
-	}
-	.grid-5 {
-		width: 40.5%;
-	}
-	.grid-6 {
-		width: 49%;
-	}
-	.grid-7 {
-		width: 57.5%;
-	}
-	.grid-8 {
-		width: 66%;
-	}
-	.grid-9 {
-		width: 74.5%;
-	}
-	.grid-10 {
-		width: 83%;
-	}
-	.grid-11 {
-		width: 91.5%;
-	}
-	.grid-12 {
-		width: 100%;
-	}
+
+	@include build-grid($gutter-width, $columns);
 
 
 	/* Clearfix
@@ -101,10 +90,5 @@ img {
 	  content: " ";
 	  display: table;
 	  clear: both;
-	}
-}
-@media (min-width: 1100px) {
-	.grid-container {
-		max-width: 1100px;
 	}
 }
