@@ -56,5 +56,12 @@
             <p>Find updates about current TV obsessions, where I am in the book writing process and other random interests on my Twitter and Facebook accounts and blog. You may also use the contact form below for questions or comments.</p>
         </section>
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/jquery.window-box.js"></script>
+    <script>
+
+        $(document).ready(windowBox());
+
+    </script>
 </body>
 </html>
