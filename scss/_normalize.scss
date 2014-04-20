@@ -115,6 +115,10 @@ a:hover {
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
 
+body {
+  font: 100%/1.5 Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+}
+
 h1 {
     font-size: 2em;
     margin: 0.67em 0;
@@ -413,7 +417,7 @@ table {
  * Remove default list styles, margins and padding.
  */
 
- ol, 
+ ol,
  ul {
   margin: 0;
   padding: 0;
