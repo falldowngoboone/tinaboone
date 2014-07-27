@@ -1,0 +1,79 @@
+.section {
+	margin: 0 0 $space;
+}
+
+.section-title {
+	margin-bottom: $space-half;
+}
+
+.about {
+
+    .panel {
+        background-image: url('../images/svg/cityscape-sm.svg');
+        background-repeat: no-repeat;
+        background-position: 0% 101%;
+        background-size: 100%;
+        background-color: $mustard;
+
+        @media screen and (min-width: $bp-small-3) {
+            background-image: url('../images/svg/cityscape.svg');
+        }
+    }
+
+    a {
+        color: $mustard-dark;
+
+        &:hover {
+            color: $mustard;
+        }
+    }
+
+}
+
+.projects {
+
+    .panel {
+        background-image: url('../images/svg/typewriter-sm.svg');
+        background-repeat: no-repeat;
+        background-position: 0% 100%;
+        background-size: 100%;
+        background-color: $blue;
+
+        @media screen and (min-width: $bp-small-3) {
+            background-image: url('../images/svg/typewriter.svg');
+        }
+    }
+
+    a {
+        color: $blue-dark;
+
+        &:hover {
+            color: $blue;
+        }
+    }
+
+}
+
+.contact {
+
+    .panel {
+        background-image: url('../images/svg/stamp-edge-sm.svg');
+        background-repeat: no-repeat;
+        background-position: 50% 100%;
+        background-size: 100%;
+        background-color: $emerald;
+
+        @media screen and (min-width: $bp-small-3) {
+            background-image: url('../images/svg/stamp-edge.svg');
+        }
+    }
+
+    a {
+        color: $emerald-dark;
+
+        &:hover {
+            color: $emerald;
+        }
+    }
+
+}

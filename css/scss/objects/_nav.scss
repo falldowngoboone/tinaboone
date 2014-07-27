@@ -1,0 +1,33 @@
+/*------------------------------------*\
+    $NAVIGATION
+\*------------------------------------*/
+
+.nav {
+
+}
+
+.nav-social {}
+
+.nav-primary {}
+
+.nav-list {
+
+    text-align: center;
+
+    li {
+        display: inline-block;
+
+        a {
+            display: block;
+            padding: $pad-half;
+
+            @media screen and (min-width: $bp-small) {
+                padding: $pad-half $pad;
+            }
+            @media screen and (min-width: $bp-large-2) {
+                padding: $pad;
+            }
+        }
+    }
+
+}
