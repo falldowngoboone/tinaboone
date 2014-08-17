@@ -1,5 +1,10 @@
-.section {
-	margin: 0 0 $space;
+.about,
+.projects,
+.contact {
+
+    footer {
+        text-align: center;
+    }
 }
 
 .section-title {
@@ -25,6 +30,17 @@
 
         &:hover {
             color: $mustard;
+        }
+    }
+
+    figcaption {
+        width: 50%;
+        border-bottom: 2px solid $mustard;
+        margin-top: -$pad-half;
+
+        @media all and (min-width: $bp-small-3) {
+            width: 100%;
+            margin-top: inherit;
         }
     }
 
@@ -73,6 +89,24 @@
 
         &:hover {
             color: $emerald;
+        }
+    }
+
+    input[type="submit"]{
+
+        background-color: $emerald-dark;
+        color: white;
+        margin-bottom: 1em;
+        width: 8.5em;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        padding: $pad;
+        border: none;
+
+        &:hover {
+            background-color: $emerald;
+            color:white;
         }
     }
 

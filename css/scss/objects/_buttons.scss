@@ -10,7 +10,8 @@
 	padding: $pad;
 	border: 0;
 	text-align: center;
-	
+	margin: auto;
+
 	&:hover, &:focus {
 		background: $gray;
 		color: $white;
@@ -34,7 +35,18 @@
 	font-weight: normal;
 }
 
-
 .text-btn {
 	font-style: italic;
+}
+
+.btn-top {
+	display: inline-block;
+	padding: $pad;
+	position: relative;
+
+	&::before {
+		content: "\2191";
+		position: absolute;
+		left: -$pad-quarter;
+	}
 }

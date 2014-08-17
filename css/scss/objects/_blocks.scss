@@ -1,12 +1,3 @@
-/* Generic Placeholder Brick: REMOVE FOR PRODUCTION */
-.brick {
-	background: #dcdddc;
-	padding: $pad-double;
-	text-align: center;
-	font-weight: bold;
-	border-bottom: 1px solid $gray-light-2;
-}
-
 /* Block */
 .block {
 	overflow: hidden;
@@ -137,13 +128,25 @@
 	}
 }
 
+/* Twitter Block */
+.block-twitter {
+
+	a {
+		color: $mustard;
+	}
+	.timePosted {
+		font-style: italic;
+	}
+
+}
+
 /* Panel */
 .panel {
     padding-top: 63.167%;
     width: 100%;
     position: relative;
     overflow: hidden;
-    margin-top: 10%;
+    margin-top: $pad-double;
 }
 .panel__title {
    	position: absolute;
@@ -153,6 +156,7 @@
 	text-align: center;
     text-shadow: 1px 1px black;
     font-family: $font-secondary;
+    font-size: 3.75em;
     color: white;
     text-transform: lowercase;
     transform: translateY(-50%);

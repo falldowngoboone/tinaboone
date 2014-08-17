@@ -82,11 +82,16 @@
 
 //States
 .valid {
-	color: $valid;
+	color: $emerald-dark;
+    display: none;
+    margin-bottom: $pad;
 }
 
 .error {
 	color: $error;
+    font-weight: bold;
+    margin-bottom: $pad;
+    display: none;
 }
 
 .warning {
