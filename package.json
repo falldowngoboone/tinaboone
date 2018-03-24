@@ -6,7 +6,7 @@
   "author": "Ryan Boone <falldowngoboone@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "browsersync": "browser-sync start --server --files '**/*.html, css/**/*.css, js/**/*.js'",
+    "browsersync": "browser-sync start --server --files '**/*.html, css/**/*.css, js/**/*.js, images/**/*'",
     "sass": "node-sass --watch css -o css",
     "start": "run-p sass browsersync",
     "test": "echo \"Error: no test specified\" && exit 1"
