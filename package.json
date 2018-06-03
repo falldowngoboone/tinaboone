@@ -7,8 +7,10 @@
   "license": "MIT",
   "scripts": {
     "browsersync": "browser-sync start --server --files '**/*.html, css/**/*.css, js/**/*.js, images/**/*'",
-    "sass": "node-sass --watch css -o css",
-    "start": "run-p sass browsersync",
+    "sass:watch": "node-sass --watch css -o css",
+    "sass": "node-sass css -o css",
+    "start": "run-p sass:watch browsersync",
+    "build": "yarn sass",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
