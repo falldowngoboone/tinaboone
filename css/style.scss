@@ -1,96 +1,96 @@
-/*------------------------------------*\
-    $TABLE OF CONTENTS
-    based generally on Harry Roberts excellent CSS Guidelines https://github.com/csswizardry/CSS-Guidelines
-\*------------------------------------*/
-/**
- * VARIABLES..............................Declarations of Sass variables
- * .....Colors
- * .....Typography
- * .....Layout
- * .....Defaults
- * .....Breakpoints
- * MIXINS.................................Sass mixins
- * RESET..................................Set reset defaults
- * GLOBAL CLASSES.........................Set reset defaults
- * GLOBAL ELEMENTS........................Establish global styles
- * .....Main
- * .....Headings
- * .....Text-related elements (p, blockquote, lists)
- * .....Defaults
- * .....Breakpoints
- * TYPOGRAPHY------------------------------
- * MEDIA------------------------------
- * LAYOUT------------------------------
- * NAVIGATION------------------------------
- * TOC To Be Continued
- */
+@mixin display-font() {
+  font-family: "Abril Fatface", cursive;
+  font-weight: normal;
+}
 
+:root {
+  --space: 1rem;
+  --font-base-size: 16px;
+  @media screen and (min-width: 1440px) {
+    --font-base-size: 1.11vw;
+  }
+}
 
+html {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-size: var(--font-base-size);
+  line-height: 1.5;
+  color: #345252;
+}
 
-@import "scss/generic/variables";
-@import "scss/generic/mixins";
-@import "scss/generic/reset";
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
+html,
+body {
+  margin: 0;
+}
 
+body {
+  background-color: #fff3eb;
+}
 
+p {
+  width: 87.5vw;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
 
+.author-name {
+  width: 87.5vw;
+  margin: 0 auto;
+  font-size: 4.5rem;
+  line-height: calc(62 / 72);
+  @include display-font();
+}
 
-/*------------------------------------*\
-    $GLOBAL ELEMENTS
-\*------------------------------------*/
-@import "scss/base/global-classes";
-@import "scss/base/main";
-@import "scss/base/links";
-@import "scss/base/headings";
-@import "scss/base/text";
-@import "scss/base/lists";
-@import "scss/base/media";
-@import "scss/base/forms";
-@import "scss/base/tables";
-@import "scss/base/animation";
+.author-photo {
+  width: 100%;
+  height: 20rem;
+  padding-right: 6.25vw;
+  margin-bottom: calc(2 * var(--space));
+  object-fit: cover;
+  object-position: right;
+}
 
+.intro {
+  font-size: 1.5rem;
+  line-height: calc(48 / 36);
+  @include display-font();
+}
 
+.social-links {
+  padding-left: 0;
+  margin: calc(1.5 * var(--space)) 0;
+  text-align: center;
+  line-height: 1;
+}
 
+.social-link {
+  width: 3.5rem;
+  display: inline-block;
+  a {
+    display: block;
+    text-decoration: none;
+  }
+}
 
+.footer {
+  width: 87.5vw;
+  margin: calc(2 * var(--space)) auto calc(5 * var(--space));
+}
 
-
-/*------------------------------------*\
-    $LAYOUT
-\*------------------------------------*/
-@import "scss/objects/layout";
-
-
-/*------------------------------------*\
-    $PAGE STRUCTURE
-\*------------------------------------*/
-@import "scss/objects/header";
-@import "scss/objects/nav";
-@import "scss/objects/main";
-@import "scss/objects/footer";
-
-
-
-/*------------------------------------*\
-    $TEXT Styles
-\*------------------------------------*/
-@import "scss/objects/text";
-
-
-/*------------------------------------*\
-    $COMPONENTS
-\*------------------------------------*/
-@import "scss/objects/icons";
-@import "scss/objects/buttons";
-@import "scss/objects/blocks";
-@import "scss/objects/lists";
-@import "scss/objects/tooltip";
-@import "scss/objects/accordion";
-@import "scss/objects/tabs";
-@import "scss/objects/sections";
-@import "scss/objects/books";
-@import "scss/objects/article";
-@import "scss/objects/comments";
-@import "scss/objects/messaging";
-@import "scss/objects/loading";
-
-
+.ie11 {
+  /* ie11 only rules */
+  // no object-fit
+  // no custom properties
+  // flex is weird
+  // no grid
+}
