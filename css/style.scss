@@ -92,6 +92,13 @@ p {
   bottom: calc(var(--line-height) * var(--space));
   margin: 0 auto;
   width: 100%;
+  transform: translateY(200%);
+  opacity: 0;
+  transition: 0.2s transform, 0.2s opacity;
+  .show-fixed-nav & {
+    transform: translateY(0);
+    opacity: 1;
+  }
   li {
     background-color: var(--color-primary);
     &:first-child {
@@ -115,12 +122,4 @@ p {
 .footer {
   width: 87.5vw;
   margin: calc(calc(2 * var(--line-height)) * var(--space)) auto var(--space);
-}
-
-.ie11 {
-  /* ie11 only rules */
-  // no object-fit
-  // no custom properties
-  // flex is weird
-  // no grid
 }
