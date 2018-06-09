@@ -6,6 +6,9 @@
 :root {
   --space: 1rem;
   --font-base-size: 16px;
+  --line-height: 1.5;
+  --color-primary: #345252;
+  --color-secondary: #fff3eb;
   @media screen and (min-width: 1440px) {
     --font-base-size: 1.11vw;
   }
@@ -15,8 +18,8 @@ html {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
   font-size: var(--font-base-size);
-  line-height: 1.5;
-  color: #345252;
+  line-height: var(--line-height);
+  color: var(--color-primary);
 }
 
 *,
@@ -31,7 +34,7 @@ body {
 }
 
 body {
-  background-color: #fff3eb;
+  background-color: var(--color-secondary);
 }
 
 p {
@@ -53,9 +56,9 @@ p {
 
 .author-photo {
   width: 100%;
-  height: 20rem;
+  height: 19rem;
   padding-right: 6.25vw;
-  margin-bottom: calc(2 * var(--space));
+  margin-bottom: calc(1.5 * var(--space));
   object-fit: cover;
   object-position: right;
 }
@@ -68,23 +71,50 @@ p {
 
 .social-links {
   padding-left: 0;
-  margin: calc(1.5 * var(--space)) 0;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: calc(var(--line-height) * var(--space)) 0;
   text-align: center;
   line-height: 1;
+  .social-links__link {
+    width: 3.5rem;
+    text-decoration: none;
+    display: block;
+  }
+  path {
+    fill: var(--color-primary);
+  }
 }
 
-.social-link {
-  width: 3.5rem;
-  display: inline-block;
-  a {
-    display: block;
-    text-decoration: none;
+.social-links--fixed {
+  position: fixed;
+  bottom: calc(var(--line-height) * var(--space));
+  margin: 0 auto;
+  width: 100%;
+  li {
+    background-color: var(--color-primary);
+    &:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    &:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+  .social-links__link {
+    width: 3.25rem;
+    padding: calc(var(--space) / 2);
+  }
+  path {
+    fill: var(--color-secondary);
   }
 }
 
 .footer {
   width: 87.5vw;
-  margin: calc(2 * var(--space)) auto calc(5 * var(--space));
+  margin: calc(calc(2 * var(--line-height)) * var(--space)) auto var(--space);
 }
 
 .ie11 {
