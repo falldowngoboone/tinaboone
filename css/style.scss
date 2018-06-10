@@ -1,5 +1,6 @@
 $sm: 520px;
 $md: 700px;
+$lg: 890px;
 @mixin display-font() {
   font-family: "Abril Fatface", cursive;
   font-weight: normal;
@@ -20,8 +21,8 @@ $md: 700px;
     --font-base-size: 2.25vw;
     --h-margin: 12vw;
   }
-  @media screen and (min-width: 1440px) {
-    --font-base-size: 1.11vw;
+  @media screen and (min-width: $lg) {
+    --font-base-size: 24px;
   }
 }
 
@@ -55,10 +56,20 @@ p {
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
+  @media screen and (min-width: $sm) {
+    font-size: 0.9rem;
+  }
   @media screen and (min-width: $md) {
     &:not(.intro) {
       margin-right: calc(var(--h-margin) + 6.5%)
     }
+  }
+}
+
+.billboard {
+  @media screen and (min-width: $lg) {
+    display: flex;
+    margin-top: calc(var(--h-margin) / 2);
   }
 }
 
@@ -69,6 +80,13 @@ p {
   @include display-font();
   @media screen and (min-width: $sm) {
     font-size: 4rem;
+  }
+  @media screen and (min-width: $lg) {
+    font-size: 10vw;
+    margin: auto calc(var(--h-margin)/2);
+    span {
+      display: block;
+    }
   }
 }
 
@@ -81,6 +99,11 @@ p {
   object-position: right;
   @media screen and (min-width: $md) {
     height: auto;
+  }
+  @media screen and (min-width: $lg) {
+    padding-right: 0;
+    height: 31vw;
+    width: 50vw;
   }
 }
 
@@ -165,4 +188,7 @@ p {
 
 .footer {
   margin: calc(calc(2 * var(--line-height)) * var(--space)) var(--h-margin) var(--space);
+  @media screen and (min-width: $md) {
+    margin-bottom: calc(calc(2 * var(--line-height)) * var(--space))
+  }
 }
