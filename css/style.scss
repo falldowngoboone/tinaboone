@@ -55,6 +55,11 @@ p {
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
+  @media screen and (min-width: $md) {
+    &:not(.intro) {
+      margin-right: calc(var(--h-margin) + 6.5%)
+    }
+  }
 }
 
 .author-name {
@@ -83,6 +88,9 @@ p {
   font-size: 1rem;
   line-height: var(--line-height);
   font-style: italic;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
   @media screen and (min-width: $sm) {
     font-size: 1.3rem;
     line-height: 1.4;
@@ -107,6 +115,16 @@ p {
   }
   path {
     fill: var(--color-primary);
+  }
+  @media screen and (min-width: $md) {
+    margin: 0;
+    float: right;
+    flex-direction: column;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: var(--v-space);
+    width: var(--h-margin);
   }
 }
 
@@ -139,6 +157,9 @@ p {
   }
   path {
     fill: var(--color-secondary);
+  }
+  @media screen and (min-width: $md) {
+    display: none;
   }
 }
 
