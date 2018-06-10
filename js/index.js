@@ -5,20 +5,33 @@ let prevScrollY = null
 let ticking = false
 
 const socialLinks = document.querySelector('[data-id=social-links]')
-const socialLinksFixed = [socialLinks.cloneNode(true)]
+const fixedNav = [socialLinks.cloneNode(true)]
   .map(function (el) {
     el.classList.add('social-links--fixed')
     el.dataset.id = 'social-links-clone'
     return el
   })[0]
 
-
-const socialLinksBottom = socialLinks.getBoundingClientRect().bottom + window.scrollY
+const fixedNavThreshold = socialLinks.getBoundingClientRect().bottom + window.scrollY
 
 const body = document.querySelector('body')
-body.appendChild(socialLinksFixed)
+body.appendChild(fixedNav)
 
-window.addEventListener('scroll', function () {
+if (fixedNav.offsetHeight) {
+  initializeFixedNav()
+} else {
+  body.removeChild(fixedNav)
+}
+
+function initializeFixedNav() {
+  window.addEventListener('scroll', fixedNavOnScroll)
+  showOrHideFixedNav()
+}
+
+function fixedNavOnScroll() {
+  if (!fixedNav.offsetHeight) {
+    return unmountFixedNav()
+  }
   scrollY = window.scrollY
 
   if (!ticking) {
@@ -31,14 +44,18 @@ window.addEventListener('scroll', function () {
 
     ticking = true
   }
-})
-showOrHideFixedNav()
+}
 
+function unmountFixedNav() {
+  body.classList.remove(SHOW_FIXED_NAV_CLASS)
+  body.removeChild(fixedNav)
+  window.removeEventListener('scroll', fixedNavOnScroll)
+}
 
 function showOrHideFixedNav() {
-  if (scrollIsBelow(scrollY, socialLinksBottom) && isScrollUp(scrollY, prevScrollY)) {
+  if (scrollIsBelow(scrollY, fixedNavThreshold) && isScrollUp(scrollY, prevScrollY)) {
     body.classList.add(SHOW_FIXED_NAV_CLASS)
-  } else if (!scrollIsBelow(scrollY, socialLinksBottom) || !isScrollUp(scrollY, prevScrollY)) {
+  } else if (!scrollIsBelow(scrollY, fixedNavThreshold) || !isScrollUp(scrollY, prevScrollY)) {
     body.classList.remove(SHOW_FIXED_NAV_CLASS)
   }
   prevScrollY = window.scrollY
