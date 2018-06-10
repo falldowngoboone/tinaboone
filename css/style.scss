@@ -1,3 +1,5 @@
+$sm: 520px;
+$md: 700px;
 @mixin display-font() {
   font-family: "Abril Fatface", cursive;
   font-weight: normal;
@@ -5,10 +7,19 @@
 
 :root {
   --space: 1rem;
+  --h-margin: 6.25vw;
+  --v-space: calc(var(--line-height) * var(--space));
   --font-base-size: 16px;
-  --line-height: 1.5;
+  --line-height: 1.6;
   --color-primary: #345252;
   --color-secondary: #fff3eb;
+  @media screen and (min-width: $sm) {
+    --font-base-size: 2.75vw;
+  }
+  @media screen and (min-width: $md) {
+    --font-base-size: 2.25vw;
+    --h-margin: 12vw;
+  }
   @media screen and (min-width: 1440px) {
     --font-base-size: 1.11vw;
   }
@@ -18,6 +29,8 @@ html {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
   font-size: var(--font-base-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   line-height: var(--line-height);
   color: var(--color-primary);
 }
@@ -38,35 +51,45 @@ body {
 }
 
 p {
-  width: 87.5vw;
-  margin-left: auto;
-  margin-right: auto;
+  margin: var(--v-space) var(--h-margin);
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
 }
 
 .author-name {
-  width: 87.5vw;
-  margin: 0 auto;
-  font-size: 4.5rem;
+  margin: 0 var(--h-margin);
+  font-size: 3rem;
   line-height: calc(62 / 72);
   @include display-font();
+  @media screen and (min-width: $sm) {
+    font-size: 4rem;
+  }
 }
 
 .author-photo {
   width: 100%;
   height: 19rem;
-  padding-right: 6.25vw;
-  margin-bottom: calc(1.5 * var(--space));
+  padding-right: var(--h-margin);
+  margin-bottom: var(--v-space);
   object-fit: cover;
   object-position: right;
+  @media screen and (min-width: $md) {
+    height: auto;
+  }
 }
 
 .intro {
-  font-size: 1.5rem;
-  line-height: calc(48 / 36);
-  @include display-font();
+  font-size: 1rem;
+  line-height: var(--line-height);
+  font-style: italic;
+  @media screen and (min-width: $sm) {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    font-style: normal;
+    @include display-font()
+  }
 }
 
 .social-links {
@@ -74,7 +97,7 @@ p {
   display: flex;
   justify-content: center;
   list-style-type: none;
-  margin: calc(var(--line-height) * var(--space)) 0;
+  margin: var(--v-space) 0;
   text-align: center;
   line-height: 1;
   .social-links__link {
@@ -120,6 +143,5 @@ p {
 }
 
 .footer {
-  width: 87.5vw;
-  margin: calc(calc(2 * var(--line-height)) * var(--space)) auto var(--space);
+  margin: calc(calc(2 * var(--line-height)) * var(--space)) var(--h-margin) var(--space);
 }
