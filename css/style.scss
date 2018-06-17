@@ -1,6 +1,7 @@
 $sm: 520px;
 $md: 700px;
 $lg: 890px;
+$xl: 1200px;
 @mixin display-font() {
   font-family: "Abril Fatface", cursive;
   font-weight: normal;
@@ -14,16 +15,6 @@ $lg: 890px;
   --line-height: 1.6;
   --color-primary: #345252;
   --color-secondary: #fff3eb;
-  @media screen and (min-width: $sm) {
-    --font-base-size: 2.75vw;
-  }
-  @media screen and (min-width: $md) {
-    --font-base-size: 2.25vw;
-    --h-margin: 12vw;
-  }
-  @media screen and (min-width: $lg) {
-    --font-base-size: 24px;
-  }
 }
 
 html {
@@ -51,25 +42,24 @@ body {
   background-color: var(--color-secondary);
 }
 
-p {
-  margin: var(--v-space) var(--h-margin);
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
-  @media screen and (min-width: $sm) {
-    font-size: 0.9rem;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
   @media screen and (min-width: $md) {
-    &:not(.intro) {
-      margin-right: calc(var(--h-margin) + 6.5%)
-    }
+    grid-template-columns: auto 12.5vw;
+    grid-row-gap: var(--v-space);
   }
-}
-
-.billboard {
   @media screen and (min-width: $lg) {
-    display: flex;
-    margin-top: calc(var(--h-margin) / 2);
+    grid-template-columns: 50vw auto 12.5vw;
+    margin-top: 3.6rem;
+    margin-right: 1rem;
+  }
+  @media screen and (min-width: $xl) {
+    grid-template-columns: 39vw auto 6.25vw;
+    margin-top: 7.5rem;
+    margin-right: 3rem;
+    grid-column-gap: var(--h-margin);
+    grid-row-gap: calc(var(--v-space) * 2);
   }
 }
 
@@ -81,11 +71,24 @@ p {
   @media screen and (min-width: $sm) {
     font-size: 4rem;
   }
+  @media screen and (min-width: $md) {
+    grid-column: 1 / span 1;
+    margin: 0 0 0 var(--h-margin);
+  }
   @media screen and (min-width: $lg) {
     font-size: 10vw;
-    margin: auto calc(var(--h-margin)/2);
+    grid-column: 2 / span 2;
+    align-self: center;
     span {
       display: block;
+    }
+  }
+  @media screen and (min-width: $xl) {
+    font-size: 8vw;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    .author-name__last {
+      margin-left: var(--h-margin);
     }
   }
 }
@@ -97,13 +100,20 @@ p {
   margin-bottom: var(--v-space);
   object-fit: cover;
   object-position: right;
-  @media screen and (min-width: $md) {
+  @media screen and (min-width: $sm) {
     height: auto;
+  }
+  @media screen and (min-width: $md) {
+    padding-right: 0;
+    margin-bottom: 0;
+    grid-column: 1 / span 1;
   }
   @media screen and (min-width: $lg) {
     padding-right: 0;
-    height: 31vw;
-    width: 50vw;
+    grid-column: 1 / span 1;
+  }
+  @media screen and (min-width: $xl) {
+    grid-row: 2 / span 1;
   }
 }
 
@@ -111,15 +121,51 @@ p {
   font-size: 1rem;
   line-height: var(--line-height);
   font-style: italic;
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
+  margin: var(--v-space) var(--h-margin);
   @media screen and (min-width: $sm) {
     font-size: 1.3rem;
     line-height: 1.4;
     letter-spacing: 0.2px;
     font-style: normal;
     @include display-font()
+  }
+  @media screen and (min-width: $md) {
+    grid-column: 1 / span 1;
+    margin: 0 0 0 var(--h-margin);
+  }
+  @media screen and (min-width: $lg) {
+    grid-column: 1 / span 2;
+    font-size: 3vw;
+  }
+  @media screen and (min-width: $xl) {
+    margin: 0;
+    grid-column: 2 / span 2;
+    font-size: 2.5vw;
+  }
+}
+
+.author-bio {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  margin: var(--v-space) var(--h-margin) 0;
+  p {
+    margin: 0 0 var(--v-space) 0;
+  }
+  @media screen and (min-width: $md) {
+    margin-top: 0;
+    margin-right: calc(var(--h-margin) + 6.5%);
+    grid-column: 1 / span 1;
+  }
+  @media screen and (min-width: $lg) {
+    grid-column: 1 / span 2;
+    margin-right: calc(var(--h-margin) / 2);
+    font-size: 1.8vw;
+  }
+  @media screen and (min-width: $xl) {
+    grid-column: 2 / span 1;
+    margin: 0;
+    font-size: 1.3vw;
   }
 }
 
@@ -128,7 +174,7 @@ p {
   display: flex;
   justify-content: center;
   list-style-type: none;
-  margin: var(--v-space) 0;
+  margin: 0;
   text-align: center;
   line-height: 1;
   .social-links__link {
@@ -141,13 +187,23 @@ p {
   }
   @media screen and (min-width: $md) {
     margin: 0;
-    float: right;
     flex-direction: column;
     align-items: center;
     position: -webkit-sticky;
     position: sticky;
     top: var(--v-space);
-    width: var(--h-margin);
+    width: 100%;
+    grid-column-start: 2;
+    grid-row-start: 4;
+    align-self: start;
+  }
+  @media screen and (min-width: $lg) {
+    grid-column-start: 3;
+    grid-row-start: 3;
+  }
+  @media screen and (min-width: $xl) {
+    grid-column-start: 3;
+    grid-row-start: 2;
   }
 }
 
@@ -187,8 +243,16 @@ p {
 }
 
 .footer {
-  margin: calc(calc(2 * var(--line-height)) * var(--space)) var(--h-margin) var(--space);
+  margin: 0 var(--h-margin) var(--space);
   @media screen and (min-width: $md) {
     margin-bottom: calc(calc(2 * var(--line-height)) * var(--space))
+  }
+  @media screen and (min-width: $lg) {
+    font-size: 1.7vw;
+  }
+  @media screen and (min-width: $xl) {
+    grid-column: 2 / span 2;
+    margin-left: 0;
+    font-size: 1.2vw;
   }
 }
